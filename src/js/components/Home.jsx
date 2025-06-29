@@ -1,28 +1,20 @@
 import React from "react";
+import Card from "./card";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock } from '@fortawesome/free-regular-svg-icons'; 
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+const Home = ({ counter }) => {
+  const digitos = counter.toString().padStart(6, "0").split("");
 
-//create your first component
-const Home = () => {
-	return (
-		<div className="text-center">
-            
-
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
+  return (
+    <div className="DivContainer"> 
+      <Card numero={<FontAwesomeIcon icon={faClock} />} />
+      {digitos.map((digito, index) => (
+      <Card key={index} numero={digito} />
+      ))}
+    </div>
+  );
 };
 
 export default Home;
+
